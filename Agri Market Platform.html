@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://127.0.0.1:5500/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agri Market Platform</title>
+    <link rel="stylesheet" href="./Agri Market Platform_files/styles.css">
+    <link rel="stylesheet" href="./Agri Market Platform_files/all.min.css">
+    <script src="./Agri Market Platform_files/chart.js.download"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Agri Market Price Discovery</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="market-info">
+            <h2>Real-time Market Information</h2>
+            <button class="btn" onclick="MarketData.fetchMarketInfo()">Get Market Info</button>
+            <table id="market-table">
+                <thead>
+                    <tr>
+                        <th>Commodity</th>
+                        <th>Price (USD)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be injected here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="price-trends">
+            <h2>Price Trends</h2>
+            <button class="btn" onclick="MarketData.fetchPriceTrends()">Get Price Trends</button>
+            <canvas id="trend-chart"></canvas>
+        </section>
+
+        <section id="transaction-form">
+            <h2>Record a Transaction</h2>
+            <form id="transaction-form">
+                <label for="commodity">Commodity:</label>
+                <input type="text" id="commodity" name="commodity" required="">
+
+                <label for="amount">Amount (kg):</label>
+                <input type="number" id="amount" name="amount" required="">
+
+                <label for="price">Price (USD):</label>
+                <input type="number" id="price" name="price" required="">
+
+                <button class="btn" type="submit">Submit Transaction</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Agri Market Platform</p>
+        </div>
+    </footer>
+
+    <script src="./Agri Market Platform_files/scripts.js.download"></script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+</body></html>
